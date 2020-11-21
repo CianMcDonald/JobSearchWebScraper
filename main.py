@@ -11,5 +11,10 @@ jobs = page_soup.find_all(class_='jobsearch-SerpJobCard')
 for j in jobs:
     title = j.find('a')['title']
     company = j.find('span', class_="company").text.strip()
-    print(title, end='-')
+    where = j.find(class_="location accessible-contrast-color-location").text.strip()
+    summary = j.find_all('li')
+    print(title, end=' | ')
+    print(where, end=' | ')
+    for s in summary:
+        print(s.text.strip(), end=' | ')
     print(company, end='\n'*2)
