@@ -13,8 +13,12 @@ for j in jobs:
     company = j.find('span', class_="company").text.strip()
     where = j.find(class_="location accessible-contrast-color-location").text.strip()
     summary = j.find_all('li')
+    titles = j.find(class_="title")
+    link = 'https://ie.indeed.com'
+    link += j.find('a')['href']
     print(title, end=' | ')
     print(where, end=' | ')
+    print(link, end=' | ')
     for s in summary:
         print(s.text.strip(), end=' | ')
     print(company, end='\n'*2)
